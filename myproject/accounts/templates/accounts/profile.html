@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<style media="screen">
+  div.scr{
+    overflow: auto;
+    height:25rem;
+  }
+</style>
+<div class="jumbotron text-center" style="background-color:transparent">
+
+      <h4>Profile</h4><br>
+          <h4>Name : {{user.get_full_name}}</li>
+          <h5>Description : {{user.userprofile.des}}</li>
+          <h5>Mobile : {{user.userprofile.phone}}</li>
+          <h5>Email : {{user.email}}</li>
+
+  </div>
+
+
+{% endblock %}

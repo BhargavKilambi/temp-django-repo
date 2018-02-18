@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="jumbotron text-center" style="background-color:transparent">
+  <form class="form-control" method="post">
+    <h3>Login here</h3><br>
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" class="btn btn-primary" name="button">Log In</button>
+
+<br>
+<br>
+    <p>OR</p>
+    <a class="nav-link" href="/register">Sign Up</a>
+<br>
+  </form>
+</div>
+
+{% endblock %}
