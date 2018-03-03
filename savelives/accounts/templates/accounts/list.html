@@ -14,14 +14,12 @@
         <h5 class="card-title">Manufacturer : {{meds.company}}</h5>
         <p class="card-text">Description : {{meds.des}}</p>
       </div>
-      {% for ph in meds.pharma.all %}
       <ul class="list-group list-group-flush">
         <li class="list-group-item"> <strong>Pharmacy</strong> </li>
-        <li class="list-group-item">{{ph.title}}</li>
-        <li class="list-group-item">Phone : {{ph.phone}}</li>
-        <li class="list-group-item">Address : {{ph.address}}</li>
+        <li class="list-group-item">{{meds.user.userprofile.title}}</li>
+        <li class="list-group-item">Phone : {{meds.user.userprofile.phone}}</li>
+        <li class="list-group-item">Address : {{meds.user.userprofile.address}}</li>
       </ul>
-      {%endfor%}
     </div>
     </div>
     {% endfor %}
