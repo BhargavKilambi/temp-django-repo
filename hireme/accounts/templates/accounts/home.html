@@ -1,11 +1,20 @@
 {% extends 'base.html' %}
 {% block head %}
-
+<style media="screen">
+html{
+  background-image: url(https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAm1AAAAJGJjYzVkMWEzLTQ0NmYtNDcyZS1iNmM5LWI0MjRkZjVkYzEwOA.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+  body{
+    background-color: transparent
+  }
+</style>
 <div class="container">
-    <h3>Search here</h3>
+    <h3>Search for working profiles here.</h3>
     <br>
     <form method="GET" action="{% url "result" %}" id="id_form">
-    <input type="search" class="form-control" placeholder="Search by name or profession..." style="float:left;width:60%;margin-right:1rem" id="q" name="q" value="{{ request.GET.q }}">
+    <input type="search" class="form-control" placeholder="Search by name or profession..." style="opacity:0.9;float:left;width:60%;margin-right:1rem" id="q" name="q" value="{{ request.GET.q }}">
     <button type="sumbit" class="btn btn-primary" name="button">Search</button>
 </form>
   <hr>
@@ -15,23 +24,18 @@
   <div class="row">
     {% for item in items %}
     <div class="col">
-      <div class="card" style="width: 18rem;">
+      <div class="card" style="width: 18rem;opacity:0.9">
     <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
     <div class="card-body">
-      <h5 class="card-title">{{item.name}}</h5>
-      <p class="card-text">{{item.des}}</p>
+      <h5 class="card-title">{{item.user.first_name}} {{item.user.last_name}}</h5>
+      <p class="card-text">{{item.description}}</p>
+      <p class="card-text">{{item.user.email}}</p>
     </div>
     <ul class="list-group list-group-flush">
-      {% for cat in item.category.all %}
-      <li class="list-group-item">{{cat.c_name}}</li>
-      {% endfor %}
-      <li class="list-group-item">Qualification : {{item.qualification}}</li>
-      <li class="list-group-item">Mobile : {{item.phone}}</li>
+      <li class="list-group-item">{{item.category}}</li>
+      <li class="list-group-item">Qualification : {{item.qualif}}</li>
+      <li class="list-group-item"><span style="color:#82a6fe">Contact</span> : {{item.phone}}</li>
     </ul>
-    <div class="card-body">
-      <a href="#" class="card-link">View Profile</a>
-      <a href="#" class="card-link">Contact</a>
-    </div>
   </div>
   <br>
     </div>

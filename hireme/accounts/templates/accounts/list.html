@@ -1,41 +1,44 @@
 {% extends 'base.html' %}
-
-
   {% block head %}
-
-  <div class="container" style="margin-top:2rem">
+  <style media="screen">
+  html{
+    background-image: url(https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAm1AAAAJGJjYzVkMWEzLTQ0NmYtNDcyZS1iNmM5LWI0MjRkZjVkYzEwOA.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+    body{
+      background-color: transparent
+    }
+  </style>
+  <div class="container">
     <div class="jumbotron text-center" style="background-color:transparent">
       <h3>All the profiles of various professionals can be found here.</h3>
     </div>
+    <style media="screen">
+      .row{
+        overflow: auto;
+        height: 20rem;
+      }
+    </style>
     <div class="row">
       {% for p in prof %}
       <div class="col">
-        <div class="card" style="width: 18rem;">
-      <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+        <div class="card" style="width: 18rem;opacity:0.8">
       <div class="card-body">
-        <h5 class="card-title">{{p.name}}</h5>
-        <p class="card-text">{{p.des}}</p>
+        <h5 class="card-title">{{p.user.first_name}} {{p.user.last_name}}</h5>
+        <p class="card-text">{{p.qualif}}</p>
+        <p class="card-text">{{p.user.email}}</p>
       </div>
       <ul class="list-group list-group-flush">
-        {% for cat in p.category.all %}
-        <li class="list-group-item">{{cat.c_name}}</li>
-        {% endfor %}
-        <li class="list-group-item">{{p.qualification}}</li>
-        <li class="list-group-item">{{p.phone}}</li>
+        <li class="list-group-item">{{p.category}}</li>
+        <li class="list-group-item">{{p.description}}</li>
+        <li class="list-group-item"><span style="color:#82a6fe">Contact</span> : {{p.phone}}</li>
       </ul>
-      <div class="card-body">
-        <a href="#" class="card-link">View Profile</a>
-        <a href="#" class="card-link">Contact</a>
-      </div>
     </div>
     <br>
       </div>
-
       {% endfor %}
     </div>
-
-
-
   </div>
 
 
